@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import "98.css"
 import "./App.css"
 import Window from "./components/Window"
+import Calendar from "./pages/Calendar"
 import {
     BrowserRouter as Router,
     Switch,
@@ -14,6 +15,9 @@ function App() {
     return (
         <Router>
             <Switch>
+                <Route exact path="/calendar">
+                    <Calendar />
+                </Route>
                 <Route>
                     <Window width={300} height={260} title={"Test!!"}>
                         <img src={logo} className="App-logo" alt="logo" />

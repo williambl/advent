@@ -10,16 +10,17 @@ export default class Window extends Component {
             onMinimise: props.onMinimise || function(){},
             onMaximise: props.onMaximise || function(){},
             onClose: props.onClose || function(){},
-            draggable: props.draggable === true,
+            draggable: props.draggable == undefined ? true : props.draggable,
             children: props.children,
-            title: props.title || ""
+            title: props.title || "",
+            style: props.style || ""
         }
     }
 
     render() {
         return (
-            <Draggable handle=".title-bar">
-                <div style={{ width: this.state.width, height: this.state.height }} className="window">
+            <Draggable handle=".title-bar" disabled={!this.state.draggable}>
+                <div style={Object.assign({ width: this.state.width, height: this.state.height }, this.state.style)} className="window">
                     <div className="title-bar">
                         <div className="title-bar-text">{this.state.title}</div>
                         <div className="title-bar-controls">
