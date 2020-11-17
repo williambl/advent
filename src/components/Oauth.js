@@ -34,7 +34,7 @@ export default class Auth extends Component {
                 .connect()
                 .then(({ authId }) => {
                     console.log('Sucessfully connected!', authId)
-                    cookie.set("auth", true, {path: "/", secure: true});
+                    cookie.set("auth", authId, {path: "/", secure: true});
                     discord
                         .auth(authId)
                         .get("/users/@me")
