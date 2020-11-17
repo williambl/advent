@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Pizzly from 'pizzly-js';
+import Cookies from "universal-cookie";
 
 // Pizzly environment variables, make sure to replace
 // these with those of your own Pizzly instance
@@ -21,34 +22,43 @@ export default class Auth extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            profile: undefined
+            username: ""
         }
     }
 
     render() {
+        const cookie = new Cookies();
+
         const connect = () => {
             discord
                 .connect()
                 .then(({ authId }) => {
                     console.log('Sucessfully connected!', authId)
-                    fetchProfile(authId)
+                    cookie.set("auth", true, {path: "/", httpOnly: true, secure: true});
+                    discord
+                        .auth(authId)
+                        .get("/users/@me")
+                        .then((response) => {
+                            response.json()
+                        })
+                        .then((json) => {
+                            this.setState({
+                                username: json.username
+                            });
+                        })
                 })
                 .catch(console.error)
         }
 
 
-        const fetchProfile = async (authId) => {
-            await discord
-                .auth(authId)
-                .get("/users/@me")
-                .then((response) => response.json())
-                .then((json) => this.setState({profile: json}));
-        };
-
         return (
             <div>
-                <button onClick={connect}>Retrieve your Discord profile</button>
-                {this.state.profile && <p> {JSON.stringify(this.state.profile)} </p>}
+                {
+                    cookie.get("auth") == undefined ?
+                        <button onClick={connect}>Retrieve your Discord profile</button>
+                        :
+                        <button disabled>Connected as {this.state.username}</button>
+                }
             </div>
         )
     }
