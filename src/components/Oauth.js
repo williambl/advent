@@ -38,10 +38,8 @@ export default class Auth extends Component {
                     discord
                         .auth(authId)
                         .get("/users/@me")
-                        .then((response) => {
-                            response.json()
-                        })
-                        .then((json) => {
+                        .then(response => response.json())
+                        .then(json => {
                             this.setState({
                                 username: json.username
                             });
