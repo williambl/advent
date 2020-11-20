@@ -77,27 +77,16 @@ export class AuthProvider extends Component {
     }
 }
 
-export class Auth extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            userInfo: this.props.userInfo,
-            isLoggedIn: this.props.isLoggedIn,
-            connectFunc: this.props.connectFunc
-        }
-    }
-
-    render() {
-        return (
-            <div>
-                {
-                    this.state.isLoggedIn ?
-                        <button disabled>Connected as {this.state.userInfo.username}</button>
-                        :
-                        <button onClick={this.state.connectFunc}>Retrieve your Discord profile</button>
-                }
-            </div>
-        )
-    }
+export function Auth (props) {
+    return (
+        <div>
+            {
+                props.isLoggedIn ?
+                    <button disabled>Connected as {props.userInfo.username}</button>
+                    :
+                    <button onClick={props.connectFunc}>Retrieve your Discord profile</button>
+            }
+        </div>
+    )
 }
 
