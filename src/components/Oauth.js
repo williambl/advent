@@ -17,28 +17,52 @@ const discord = pizzly.integration('discord', {
     setupId: DISCORD_SETUP_ID
 })
 
-
-export default class Auth extends Component {
+export class AuthProvider extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            username: "unknown"
+            userInfo: undefined,
+            isLoggedIn: false,
+            children: props.children
         }
     }
 
     componentDidMount() {
-        authId = cookie.get("auth")
+        const cookie = new Cookies();
+
+        const authId = cookie.get("auth")
         if (authId != undefined) {
             discord
                 .auth(authId)
                 .get("/users/@me")
                 .then(response => response.json())
                 .then(json => this.setState({
-                    username: json.username
+                    userInfo: json,
+                    isLoggedIn: true
                 }))
                 .catch(console.error)
         }
+    }
 
+    render() {
+        const props = { userInfo: this.state.userInfo, isLoggedIn: this.state.isLoggedIn };
+        const modifiedChildren = React.Children.map(this.state.children, child => {
+            return React.isValidElement(child) ?
+                React.cloneElement(child, props)
+            :
+                child
+        });
+        return modifiedChildren
+    }
+}
+
+export class Auth extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            userInfo: this.props.userInfo,
+            isLoggedIn: this.props.isLoggedIn
+        }
     }
 
     render() {
@@ -67,12 +91,13 @@ export default class Auth extends Component {
         return (
             <div>
                 {
-                    cookie.get("auth") == undefined ?
-                        <button onClick={connect}>Retrieve your Discord profile</button>
+                    this.state.isLoggedIn ?
+                        <button disabled>Connected as {this.state.userInfo.username}</button>
                         :
-                        <button disabled>Connected as {this.state.username}</button>
+                        <button onClick={connect}>Retrieve your Discord profile</button>
                 }
             </div>
         )
     }
 }
+
