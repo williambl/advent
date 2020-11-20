@@ -44,9 +44,10 @@ export class AuthProvider extends Component {
         }
     }
 
-    connect() {
-        const cookies = new Cookies();
-             discord
+    render() {
+        const connect = ()=>{
+            const cookies = new Cookies();
+            discord
                 .connect()
                 .then(({ authId }) => {
                     console.log('Sucessfully connected!', authId)
@@ -63,14 +64,13 @@ export class AuthProvider extends Component {
                         })
                 })
                 .catch(console.error)       
-    }
+        }
 
-    render() {
-        const props = { userInfo: this.state.userInfo, isLoggedIn: this.state.isLoggedIn, connectFunc: this.connect };
+        const props = { userInfo: this.state.userInfo, isLoggedIn: this.state.isLoggedIn, connectFunc: connect };
         const modifiedChildren = React.Children.map(this.state.children, child => {
             return React.isValidElement(child) ?
                 React.cloneElement(child, props)
-            :
+                :
                 child
         });
         return modifiedChildren
