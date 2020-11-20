@@ -4,6 +4,7 @@ import "./App.css"
 import Window from "./components/Window"
 import Calendar from "./pages/Calendar"
 import { Auth, AuthProvider } from "./components/Oauth"
+import Header from './components/Header'
 import {
     BrowserRouter as Router,
     Switch,
@@ -15,12 +16,12 @@ import {
 function App() {
     return (
         <Router>
+            <AuthProvider>
+                <Header />
+            </AuthProvider>
             <Switch>
                 <Route exact path="/calendar">
                     <Calendar />
-                </Route>
-                <Route exact path="/auth">
-                    <AuthProvider> <Auth /> </AuthProvider>
                 </Route>
                 <Route>
                     <Window width={300} height={260} title={"Test!!"}>
