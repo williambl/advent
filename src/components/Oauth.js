@@ -22,8 +22,23 @@ export default class Auth extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            username: ""
+            username: "unknown"
         }
+    }
+
+    componentDidMount() {
+        authId = cookie.get("auth")
+        if (authId != undefined) {
+            discord
+                .auth(authId)
+                .get("/users/@me")
+                .then(response => response.json())
+                .then(json => this.setState({
+                    username: json.username
+                }))
+                .catch(console.error)
+        }
+
     }
 
     render() {
