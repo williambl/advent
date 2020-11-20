@@ -44,8 +44,29 @@ export class AuthProvider extends Component {
         }
     }
 
+    connect() {
+        const cookies = new Cookies();
+             discord
+                .connect()
+                .then(({ authId }) => {
+                    console.log('Sucessfully connected!', authId)
+                    cookies.set("auth", authId, {path: "/", secure: true});
+                    discord
+                        .auth(authId)
+                        .get("/users/@me")
+                        .then(response => response.json())
+                        .then(json => {
+                            this.setState({
+                                userInfo: json,
+                                isLoggedIn: true
+                            });
+                        })
+                })
+                .catch(console.error)       
+    }
+
     render() {
-        const props = { userInfo: this.state.userInfo, isLoggedIn: this.state.isLoggedIn };
+        const props = { userInfo: this.state.userInfo, isLoggedIn: this.state.isLoggedIn, connectFunc: this.connect };
         const modifiedChildren = React.Children.map(this.state.children, child => {
             return React.isValidElement(child) ?
                 React.cloneElement(child, props)
@@ -61,40 +82,19 @@ export class Auth extends Component {
         super(props)
         this.state = {
             userInfo: this.props.userInfo,
-            isLoggedIn: this.props.isLoggedIn
+            isLoggedIn: this.props.isLoggedIn,
+            connectFunc: this.props.connectFunc
         }
     }
 
     render() {
-        const cookie = new Cookies();
-
-        const connect = () => {
-            discord
-                .connect()
-                .then(({ authId }) => {
-                    console.log('Sucessfully connected!', authId)
-                    cookie.set("auth", authId, {path: "/", secure: true});
-                    discord
-                        .auth(authId)
-                        .get("/users/@me")
-                        .then(response => response.json())
-                        .then(json => {
-                            this.setState({
-                                username: json.username
-                            });
-                        })
-                })
-                .catch(console.error)
-        }
-
-
         return (
             <div>
                 {
                     this.state.isLoggedIn ?
                         <button disabled>Connected as {this.state.userInfo.username}</button>
                         :
-                        <button onClick={connect}>Retrieve your Discord profile</button>
+                        <button onClick={this.state.connectFunc}>Retrieve your Discord profile</button>
                 }
             </div>
         )
