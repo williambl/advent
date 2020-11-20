@@ -21,7 +21,7 @@ export class AuthProvider extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            userInfo: undefined,
+            userInfo: {},
             isLoggedIn: false,
             children: props.children
         }
