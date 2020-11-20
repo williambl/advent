@@ -12,7 +12,7 @@ export default function Header (props) {
             <div className="window-body" style={{display: "flex", flexDirection: "row-reverse", alignItems: "center"}}>
                 {
                     props.isLoggedIn ?
-                        <img className="inset" src={"https://cdn.discordapp.com/avatars"+props.userInfo.id+props.userInfo.avatar+".png"} style={{height: "40px", width: "40px"}} />
+                        <img className="inset" src={"https://cdn.discordapp.com/avatars/"+props.userInfo.id+"/"+props.userInfo.avatar+".png"} style={{height: "40px", width: "40px"}} />
                         :
                         <div className="inset" style={{height: "40px", width: "40px"}} />
                 }
