@@ -22,7 +22,7 @@ export default class Calendar extends Component {
                     <ul className="tree-view" style={{margin: "10px", width: "60%", height: "100%", flex: "0 1 auto"}}>
                         {challengeDescriptions[id-1].map((it) => <li>{it}</li>)}
                     </ul>
-                    <button style={{flex: "0 1 auto", width: "80px", height: "80px", backgroundImage: "URL(\""+challengeImages[id-1]+"\")", backgroundSize: "cover"}} />
+                    <button style={{flex: "0 1 auto", width: "80px", height: "80px", backgroundImage: "URL(\""+challengeImages[id-1]+"\")", backgroundSize: "contain"}} />
                 </fieldset>
             )
         }
