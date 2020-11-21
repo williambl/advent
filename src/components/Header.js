@@ -3,7 +3,7 @@ import { Auth } from './Oauth';
 
 export default function Header (props) {
     return (
-        <header className="window" style={{width: "100%", height: "70px"}}>
+        <header className="window" style={{width: "auto", height: "70px"}}>
             <Link to="/">
                 <div className="title-bar">
                     <div className="title-bar-text">Advent challenge 2020</div>
@@ -23,5 +23,4 @@ export default function Header (props) {
         </header>
     )
 }
-
 

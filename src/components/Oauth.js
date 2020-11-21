@@ -82,9 +82,9 @@ export function Auth (props) {
         <div>
             {
                 props.isLoggedIn ?
-                    <button>Connected as {props.userInfo.username}</button>
+                    <button>Logged in as {props.userInfo.username}</button>
                     :
-                    <button onClick={props.connectFunc}>Retrieve your Discord profile</button>
+                    <button onClick={props.connectFunc}>Log in with Discord</button>
             }
         </div>
     )
