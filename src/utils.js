@@ -55,3 +55,7 @@ export async function answerChallenge(id, answer) {
 
     return value
 }
+
+export async function getCompletedChallenges() {
+    return fetch("/api/challengesCompleted/").json()
+}
