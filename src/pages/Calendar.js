@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Window from "../components/Window";
+import { isChallengeReady } from "../utils"
 
 const challengeDescriptions = new Array(25).fill([])
 
@@ -22,7 +23,7 @@ export default class Calendar extends Component {
                     <ul className="tree-view" style={{margin: "10px", width: "60%", height: "100%", flex: "0 1 auto"}}>
                         {challengeDescriptions[id-1].map((it) => <li>{it}</li>)}
                     </ul>
-                    <button style={{flex: "0 1 auto", width: "80px", height: "80px", backgroundImage: "URL(\""+challengeImages[id-1]+"\")", backgroundSize: "contain"}} />
+                    <button style={{flex: "0 1 auto", width: "80px", height: "80px", backgroundImage: "URL(\""+challengeImages[id-1]+"\")", backgroundSize: "contain", filter: isChallengeReady(id) ? "" : "saturate(0%)"}} disabled={ isChallengeReady(id) ? false : true }/>
                 </fieldset>
             )
         }
