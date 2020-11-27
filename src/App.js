@@ -1,7 +1,8 @@
 import logo from './logo.svg';
 import "98.css"
 import "./App.css"
-import { currentDay, challengeComponents } from "./utils"
+import { currentDay } from "./utils"
+import ChallengeComponent from "./pages/ChallengeComponent"
 import Window from "./components/Window"
 import Calendar from "./pages/Calendar"
 import { Auth, AuthProvider } from "./components/Oauth"
@@ -15,11 +16,6 @@ import {
 } from 'react-router-dom';
 
 function App() {
-
-    const challenges = []
-
-    for (let i = 0; i < currentDay(); i++) challenges.push(<Route path={i+1} component={challengeComponents[i]} />)
-
     return (
         <Router>
             <AuthProvider>
@@ -29,9 +25,7 @@ function App() {
                 <Route exact path="/calendar">
                     <Calendar />
                 </Route>
-                <Route path="/challenge">
-                    {challenges}
-                </Route>
+                <Route path="/challenge/:id" component={ChallengeComponent} />
                 <Route>
                     <Window width={300} height={260} title={"Test!!"}>
                         <img src={logo} className="App-logo" alt="logo" />
