@@ -2,7 +2,7 @@ import Challenge1 from './pages/challenges/1'
 
 export const isChallengeReady = id => id <= currentDay()
 
-export const currentDay = () => true ? 3 : new Date().getDay()
+export const currentDay = () => new Date().getMonth() === 11 ? 0 : new Date().getDay()
 
 export const challengeComponents = [
     <Challenge1 />,
@@ -71,7 +71,7 @@ export async function answerChallenge(id, answer) {
 
 export async function getCompletedChallenges() {
     if (completedChallengesIsDirty || completedChallenges == undefined) {
-        //await updateCompletedChallenges()
+        await updateCompletedChallenges()
     }
-    return true ? [0, 1, 3] : completedChallenges
+    return completedChallenges
 }
