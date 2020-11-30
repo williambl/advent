@@ -1,11 +1,16 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Auth } from './Oauth';
 
 export default function Header (props) {
+
+    const location = useLocation()
+
+    const challengeNum = parseInt(location.pathname.split("/").pop())
+
     return (
         <header className="window" style={{width: "auto", height: "70px"}}>
             <Link to="/">
-                <div className="title-bar">
+                <div className={ !isNaN(challengeNum) && props.completedChallenges !== undefined && props.completedChallenges.includes(challengeNum) ? "title-bar completed-challenge" : "title-bar"}>
                     <div className="title-bar-text">Advent challenge 2020</div>
                 </div>
             </Link>
