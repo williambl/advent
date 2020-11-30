@@ -24,6 +24,9 @@ export default function Header (props) {
                 {
                     <Auth userInfo={props.userInfo} isLoggedIn={props.isLoggedIn} connectFunc={props.connectFunc} />
                 }
+                <span style={{marginRight: "auto"}}>
+                    Completed <strong>{props.completedChallenges === undefined ? 0 : props.completedChallenges.length}/ 25</strong> challenges.
+                </span>
             </div>
         </header>
     )
