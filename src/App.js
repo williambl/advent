@@ -8,6 +8,7 @@ import Calendar from "./pages/Calendar"
 import { Auth, AuthProvider } from "./components/Oauth"
 import ChallengeDataProvider from './components/ChallengeDataProvider'
 import Header from './components/Header'
+import { Helmet } from 'react-helmet'
 import {
     BrowserRouter as Router,
     Switch,
@@ -19,30 +20,21 @@ import {
 function App() {
     return (
         <Router>
+            <Helmet>
+                <meta charset="utf-8" />
+                <meta name="description" content="Complete 25 challenges throughout December!" />
+                <meta name="og:title" content="The Leaf Lemon Annual Advent Challenge 2020" />
+                <meta name="theme-color" content="#008080" />
+                <title>The LLAAC 2020</title>
+            </Helmet>
             <AuthProvider>
                 <ChallengeDataProvider>
                     <Header />
                 </ChallengeDataProvider>
             </AuthProvider>
             <Switch>
-                <Route exact path="/calendar">
-                    <Calendar />
-                </Route>
                 <Route path="/challenge/:id" component={ChallengeComponent} />
-                <Route>
-                    <Window width={300} height={260} title={"Test!!"}>
-                        <img src={logo} className="App-logo" alt="logo" />
-                        <p>
-                            This is our test! It uses <strong>React.js</strong>.
-                        </p>
-                    </Window>
-                    <Window width={300} height={260} title={"Test 2!!"}>
-                        <img src={logo} className="App-logo" alt="logo" />
-                        <p>
-                            This is our test! It uses <strong>React.js</strong>.
-                        </p>
-                    </Window>
-                </Route>
+                <Route exact path="/" component={Calendar} />
             </Switch>
         </Router>
     );
