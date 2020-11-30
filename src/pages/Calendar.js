@@ -3,15 +3,66 @@ import Window from "../components/Window";
 import { isChallengeReady } from "../utils"
 import LinkButton from "../components/LinkButton"
 
-const challengeDescriptions = new Array(25).fill([])
+import lockIcon from '../assets/Lock-icon.png'
+import keyIcon from '../assets/key-icon.png'
+import calculatorIcon from '../assets/calculator-icon.png'
+import joystickIcon from '../assets/joystick-icon.png'
 
-const challengeImages = new Array(25).fill("https://cdn.discordapp.com/avatars/252528045330661378/a47168a6a60776d30e84d88ea3c60906.png")
+const challengeDescriptions = [
+    ["Just log in!"],
+    ["This one's pretty base-ic"],
+    ["Good at stacking?"],
+    ["?"],
+    ["?"],
+    ["?"],
+    ["?"],
+    ["?"],
+    ["?"],
+    ["?"],
+    ["?"],
+    ["?"],
+    ["?"],
+    ["?"],
+    ["?"],
+    ["?"],
+    ["?"],
+    ["?"],
+    ["?"],
+    ["?"],
+    ["?"],
+    ["?"],
+    ["?"],
+    ["?"],
+    ["?"]
+]
 
-//temporary until i've written them all
-challengeDescriptions[0] = ["Just log in!"]
-challengeDescriptions[1] = ["bleh."]
-challengeDescriptions[2] = ["teeeeeest"]
-challengeDescriptions[3] = ["i cba to write descriptions for the rest"]
+const challengeImages = [
+    keyIcon,
+    calculatorIcon,
+    joystickIcon,
+    lockIcon,
+    lockIcon,
+    lockIcon,
+    lockIcon,
+    lockIcon,
+    lockIcon,
+    lockIcon,
+    lockIcon,
+    lockIcon,
+    lockIcon,
+    lockIcon,
+    lockIcon,
+    lockIcon,
+    lockIcon,
+    lockIcon,
+    lockIcon,
+    lockIcon,
+    lockIcon,
+    lockIcon,
+    lockIcon,
+    lockIcon,
+    lockIcon,
+]
 
 export default class Calendar extends Component {
     render() {
@@ -24,7 +75,7 @@ export default class Calendar extends Component {
                     <ul className="tree-view" style={{margin: "10px", width: "60%", height: "100%", flex: "0 1 auto"}}>
                         {challengeDescriptions[id-1].map((it) => <li>{it}</li>)}
                     </ul>
-                    <LinkButton style={{flex: "0 1 auto", width: "80px", height: "80px", backgroundImage: "URL(\""+challengeImages[id-1]+"\")", backgroundSize: "contain", filter: isChallengeReady(id) ? "" : "saturate(0%)"}} disabled={ isChallengeReady(id) ? false : true } to={ isChallengeReady(id) ? "/challenge/"+id : "#"}/>
+                    <LinkButton style={{flex: "0 1 auto", width: "80px", height: "80px", backgroundImage: "URL(\""+challengeImages[id-1]+"\")", backgroundSize: "auto", backgroundRepeat: "no-repeat", backgroundPosition: "center", filter: isChallengeReady(id) ? "" : "saturate(0%)", imageRendering: "crisp-edges"}} disabled={ isChallengeReady(id) ? false : true } to={ isChallengeReady(id) ? "/challenge/"+id : "#"}/>
                 </fieldset>
             )
         }

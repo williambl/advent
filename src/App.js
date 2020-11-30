@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import "98.css"
 import "./App.css"
 import { currentDay, updateCompletedChallenges } from "./utils"
