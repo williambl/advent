@@ -33,7 +33,20 @@ export const challengeComponents = [
     <Challenge1 />,
 ]
 
-export const challengeStata = new Array(25).fill(false, 0, -1)
+var completedChallenges = undefined
+
+var completedChallengesIsDirty = true
+var currentCheckingPromise = undefined
+
+export async function updateCompletedChallenges() {
+    if (currentCheckingPromise !== undefined) {
+        return await currentCheckingPromise
+    }
+    currentCheckingPromise = fetch("/api/challengesCompleted")
+    const returnVal = (await currentCheckingPromise).json()
+    currentCheckingPromise = undefined
+    return returnVal
+}
 
 export async function answerChallenge(id, answer) {
     const response = await fetch(
@@ -51,11 +64,14 @@ export async function answerChallenge(id, answer) {
     const value = response.ok && response.json.value
 
     if (value)
-        challengeStata[id-1] = true
+        completedChallengesIsDirty = true
 
     return value
 }
 
 export async function getCompletedChallenges() {
-    return fetch("/api/challengesCompleted/").json()
+    if (completedChallengesIsDirty || completedChallenges == undefined) {
+        //await updateCompletedChallenges()
+    }
+    return true ? [0, 1, 3] : completedChallenges
 }

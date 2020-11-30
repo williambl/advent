@@ -1,11 +1,12 @@
 import logo from './logo.svg';
 import "98.css"
 import "./App.css"
-import { currentDay } from "./utils"
+import { currentDay, updateCompletedChallenges } from "./utils"
 import ChallengeComponent from "./pages/ChallengeComponent"
 import Window from "./components/Window"
 import Calendar from "./pages/Calendar"
 import { Auth, AuthProvider } from "./components/Oauth"
+import ChallengeDataProvider from './components/ChallengeDataProvider'
 import Header from './components/Header'
 import {
     BrowserRouter as Router,
@@ -19,7 +20,9 @@ function App() {
     return (
         <Router>
             <AuthProvider>
-                <Header />
+                <ChallengeDataProvider>
+                    <Header />
+                </ChallengeDataProvider>
             </AuthProvider>
             <Switch>
                 <Route exact path="/calendar">
