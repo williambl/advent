@@ -23,8 +23,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "preinstall": "git clone https://github.com/williambl/advent-server.git && cd advent-server && yarn install && PORT=8080 yarn start & cd .."
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
