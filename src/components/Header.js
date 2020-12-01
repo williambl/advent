@@ -29,7 +29,7 @@ export default function Header (props) {
                 </span>
 
                 <Link to="/" style={{marginRight: "10px", display: "flex", justifyContent: "flex-end", alignItems: "center"}}>
-                    <img src="/favicon.ico" style={{marginRight: "4px"}} />
+                    <img src="/favicon.ico" alt="santa hat icon" style={{marginRight: "4px"}} />
                     {location.pathname === "/" ? null : <strong>Back to calendar</strong>}
                 </Link>
             </div>
