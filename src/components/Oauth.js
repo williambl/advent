@@ -51,7 +51,7 @@ export class AuthProvider extends Component {
                 .connect()
                 .then(({ authId }) => {
                     console.log('Sucessfully connected!', authId)
-                    cookies.set("auth", authId, {path: "/", secure: true});
+                    cookies.set("auth", authId, {path: "/", secure: true, expires: new Date().setFullYear(2022)});
                     discord
                         .auth(authId)
                         .get("/users/@me")
