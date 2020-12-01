@@ -10,7 +10,7 @@ export default class Window extends Component {
             onMinimise: props.onMinimise || function(){},
             onMaximise: props.onMaximise || function(){},
             onClose: props.onClose || function(){},
-            draggable: props.draggable == undefined ? true : props.draggable,
+            draggable: props.draggable === undefined ? true : props.draggable,
             children: props.children,
             title: props.title || "",
             style: props.style || ""

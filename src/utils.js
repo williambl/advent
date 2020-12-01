@@ -73,7 +73,7 @@ export async function answerChallenge(id, answer) {
 }
 
 export async function getCompletedChallenges() {
-    if (completedChallengesIsDirty || completedChallenges == undefined) {
+    if (completedChallengesIsDirty || completedChallenges === undefined) {
         await updateCompletedChallenges()
     }
     return completedChallenges

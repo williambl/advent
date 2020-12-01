@@ -1,19 +1,15 @@
 import "98.css"
 import "./App.css"
-import { currentDay, updateCompletedChallenges } from "./utils"
 import ChallengeComponent from "./pages/ChallengeComponent"
-import Window from "./components/Window"
 import Calendar from "./pages/Calendar"
-import { Auth, AuthProvider } from "./components/Oauth"
+import { AuthProvider } from "./components/Oauth"
 import ChallengeDataProvider from './components/ChallengeDataProvider'
 import Header from './components/Header'
 import { Helmet } from 'react-helmet'
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
-    Link,
-    withRouter
+    Route
 } from 'react-router-dom';
 
 function App() {

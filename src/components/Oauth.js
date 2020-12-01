@@ -31,7 +31,7 @@ export class AuthProvider extends Component {
         const cookie = new Cookies();
 
         const authId = cookie.get("auth")
-        if (authId != undefined) {
+        if (authId !== undefined) {
             discord
                 .auth(authId)
                 .get("/users/@me")
