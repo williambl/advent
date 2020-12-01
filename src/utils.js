@@ -1,5 +1,7 @@
 import Challenge1 from './pages/challenges/1'
 
+const apiUrl = "advent-api.artemisvioletta.co.uk"
+
 export const isChallengeReady = id => id <= currentDay()
 
 export const currentDay = () => new Date().getMonth() === 11 ? new Date().getDate() : 0
@@ -42,7 +44,7 @@ export async function updateCompletedChallenges() {
     if (currentCheckingPromise !== undefined) {
         return await currentCheckingPromise
     }
-    currentCheckingPromise = fetch("/api/challengesCompleted")
+    currentCheckingPromise = fetch(apiUrl+"/api/challengesCompleted", {credentials: 'include'})
     const returnVal = (await currentCheckingPromise).json()
     currentCheckingPromise = undefined
     return returnVal
@@ -50,8 +52,9 @@ export async function updateCompletedChallenges() {
 
 export async function answerChallenge(id, answer) {
     const response = await fetch(
-        "/api/check/"+id, {
+        apiUrl+"/api/check/"+id, {
             method: 'POST',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json'
             },
