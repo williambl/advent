@@ -1,4 +1,5 @@
 import Challenge1 from './pages/challenges/1'
+import Cookies from "universal-cookie";
 
 const apiUrl = "https://advent2020-api.herokuapp.com"
 
@@ -44,7 +45,7 @@ export async function updateCompletedChallenges() {
     if (currentCheckingPromise !== undefined) {
         return await currentCheckingPromise
     }
-    currentCheckingPromise = fetch(apiUrl+"/api/challengesCompleted", {credentials: 'include'})
+    currentCheckingPromise = fetch(apiUrl+"/api/challengesCompleted", {headers: {'X-Auth': new Cookies().get("auth")}})
     const returnVal = (await currentCheckingPromise).json()
     currentCheckingPromise = undefined
     return returnVal
@@ -54,9 +55,9 @@ export async function answerChallenge(id, answer) {
     const response = await fetch(
         apiUrl+"/api/check/"+id, {
             method: 'POST',
-            credentials: 'include',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'X-Auth': new Cookies().get("auth")
             },
             body: JSON.stringify({
                 answer: answer
