@@ -27,6 +27,11 @@ export default function Header (props) {
                 <span style={{marginRight: "auto"}}>
                     Completed <strong>{props.completedChallenges === undefined ? 0 : props.completedChallenges.length}/ 25</strong> challenges.
                 </span>
+
+                <Link to="/" style={{marginRight: "10px", display: "flex", justifyContent: "flex-end", alignItems: "center"}}>
+                    <img src="/favicon.ico" style={{marginRight: "4px"}} />
+                    {location.pathname === "/" ? null : <strong>Back to calendar</strong>}
+                </Link>
             </div>
         </header>
     )
