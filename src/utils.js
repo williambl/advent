@@ -47,9 +47,8 @@ export async function updateCompletedChallenges() {
         return await currentCheckingPromise
     }
     currentCheckingPromise = fetch(apiUrl+"/api/challengesCompleted", {headers: {'X-Auth': new Cookies().get("auth")}})
-    const returnVal = (await currentCheckingPromise).json()
+    completedChallenges = (await currentCheckingPromise).json()
     currentCheckingPromise = undefined
-    return returnVal
 }
 
 export async function answerChallenge(id, answer) {
