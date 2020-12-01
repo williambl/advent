@@ -42,6 +42,10 @@ var currentCheckingPromise = undefined
 
 export var challengeCompletionListeners = []
 
+export function removeCompletionListener(item) {
+    challengeCompletionListeners = challengeCompletionListeners.filter(it => it !== item)
+}
+
 export async function updateCompletedChallenges() {
     if (currentCheckingPromise !== undefined) {
         return await currentCheckingPromise
