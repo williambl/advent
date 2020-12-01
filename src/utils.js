@@ -2,7 +2,7 @@ import Challenge1 from './pages/challenges/1'
 
 export const isChallengeReady = id => id <= currentDay()
 
-export const currentDay = () => new Date().getMonth() !== 11 ? 0 : new Date().getDay()
+export const currentDay = () => new Date().getMonth() === 11 ? new Date().getDate() : 0
 
 export const challengeComponents = [
     <Challenge1 />,
