@@ -1,6 +1,5 @@
 import Challenge1 from './pages/challenges/1'
 import Cookies from "universal-cookie";
-
 const apiUrl = "https://advent2020-api.herokuapp.com"
 
 export const isChallengeReady = id => id <= currentDay()
@@ -41,6 +40,8 @@ var completedChallenges = undefined
 var completedChallengesIsDirty = true
 var currentCheckingPromise = undefined
 
+export var challengeCompletionListeners = []
+
 export async function updateCompletedChallenges() {
     if (currentCheckingPromise !== undefined) {
         return await currentCheckingPromise
@@ -67,8 +68,10 @@ export async function answerChallenge(id, answer) {
 
     const value = response.ok && response.json.value
 
-    if (value)
-        completedChallengesIsDirty = true
+    if (value) {
+        updateCompletedChallenges()
+        challengeCompletionListeners.forEach(it => it.updateChallenges())
+    }
 
     return value
 }

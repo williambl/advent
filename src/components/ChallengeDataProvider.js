@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { getCompletedChallenges } from '../utils'
+import { getCompletedChallenges, challengeCompletionListeners } from '../utils'
 
 export default class ChallengeDataProvider extends Component {
     constructor(props) {
@@ -10,10 +10,19 @@ export default class ChallengeDataProvider extends Component {
     }
 
     async componentDidMount() {
+        await this.updateChallenges()
+        challengeCompletionListeners.push(this)
+    }
+
+    async updateChallenges() {
         const completedChallenges = await getCompletedChallenges()
         this.setState({
             completed: completedChallenges
         })
+    }
+
+    async componentWillUnmount() {
+        challengeCompletionListeners = challengeCompletionListeners.filter(it => it !== this)
     }
 
     render() {
