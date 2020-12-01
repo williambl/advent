@@ -16,11 +16,6 @@ function App() {
     return (
         <Router>
             <Helmet>
-                <meta charset="utf-8" />
-                <meta name="description" content="Complete 25 challenges throughout December!" />
-                <meta name="og:title" content="The Leaf Lemon Annual Advent Challenge 2020" />
-                <meta name="theme-color" content="#008080" />
-                <title>The LLAAC 2020</title>
             </Helmet>
             <AuthProvider>
                 <ChallengeDataProvider>
