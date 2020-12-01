@@ -1,6 +1,6 @@
 import Challenge1 from './pages/challenges/1'
 
-const apiUrl = "advent-api.artemisvioletta.co.uk"
+const apiUrl = "https://advent2020-api.herokuapp.com"
 
 export const isChallengeReady = id => id <= currentDay()
 
