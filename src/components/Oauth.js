@@ -30,11 +30,15 @@ export class AuthProvider extends Component {
 
     async componentDidMount() {
         authListeners.push(this)
-        this.setState(getAuthInfo())
+        this.setState(await getAuthInfo())
     }
 
     async componentWillUnmount() {
         removeAuthListener(this)
+    }
+
+    async updateAuth() {
+        this.setState(await getAuthInfo())
     }
 
     render() {

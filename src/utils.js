@@ -90,7 +90,6 @@ export async function getCompletedChallenges() {
 export var authListeners = []
 
 var currentAuthPromise = undefined
-var authInfoIsDirty = true
 export var authInfo = {isLoggedIn: false, userInfo: {}}
 
 export function removeAuthListener(item) {
@@ -114,7 +113,7 @@ export async function updateAuthInfo() {
 }
 
 export async function getAuthInfo() {
-    if (authInfoIsDirty || authInfo === undefined) {
+    if (authInfo === undefined) {
         await updateAuthInfo()
     }
     return authInfo
