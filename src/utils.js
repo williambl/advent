@@ -90,7 +90,7 @@ export async function getCompletedChallenges() {
 export var authListeners = []
 
 var currentAuthPromise = undefined
-var authInfo === undefined
+var authInfo = undefined
 
 export function removeAuthListener(item) {
     authListeners = authListeners.filter(it => it !== item)
