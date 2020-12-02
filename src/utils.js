@@ -86,3 +86,36 @@ export async function getCompletedChallenges() {
     }
     return completedChallenges
 }
+
+export var authListeners = []
+
+var currentAuthPromise = undefined
+var authInfoIsDirty = true
+export var authInfo = {isLoggedIn: false, userInfo: {}}
+
+export function removeAuthListener(item) {
+    authListeners = authListeners.filter(it => it !== item)
+}
+
+export async function updateAuthInfo() {
+    if (new Cookies().get("auth") === undefined) {
+        return
+    }
+    if (currentAuthPromise !== undefined) {
+        return await currentAuthPromise
+    }
+    currentAuthPromise = fetch(apiUrl+"/api/challengesCompleted", {headers: {'X-Auth': new Cookies().get("auth")}})
+    authInfo = {
+        isLoggedIn: true,
+        userInfo: await currentAuthPromise
+    }
+    currentAuthPromise = undefined
+        authListeners.forEach(it => it.updateAuth())
+}
+
+export async function getAuthInfo() {
+    if (authInfoIsDirty || authInfo === undefined) {
+        await updateAuthInfo()
+    }
+    return authInfo
+}

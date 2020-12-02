@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Pizzly from 'pizzly-js';
 import Cookies from "universal-cookie";
+import { getAuthInfo, authListeners, removeAuthListener, updateAuthInfo } from '../utils'
 
 // Pizzly environment variables, make sure to replace
 // these with those of your own Pizzly instance
@@ -27,21 +28,13 @@ export class AuthProvider extends Component {
         }
     }
 
-    componentDidMount() {
-        const cookie = new Cookies();
+    async componentDidMount() {
+        authListeners.push(this)
+        this.setState(getAuthInfo())
+    }
 
-        const authId = cookie.get("auth")
-        if (authId !== undefined) {
-            discord
-                .auth(authId)
-                .get("/users/@me")
-                .then(response => response.json())
-                .then(json => this.setState({
-                    userInfo: json,
-                    isLoggedIn: true
-                }))
-                .catch(console.error)
-        }
+    async componentWillUnmount() {
+        removeAuthListener(this)
     }
 
     render() {
@@ -63,7 +56,8 @@ export class AuthProvider extends Component {
                             });
                         })
                 })
-                .catch(console.error)       
+                .catch(console.error)
+            updateAuthInfo()
         }
 
         const props = { userInfo: this.state.userInfo, isLoggedIn: this.state.isLoggedIn, connectFunc: connect };
