@@ -87,34 +87,3 @@ export async function getCompletedChallenges() {
     return completedChallenges
 }
 
-export var authListeners = []
-
-var currentAuthPromise = undefined
-var authInfo = undefined
-
-export function removeAuthListener(item) {
-    authListeners = authListeners.filter(it => it !== item)
-}
-
-export async function updateAuthInfo() {
-    if (new Cookies().get("auth") === undefined) {
-        return
-    }
-    if (currentAuthPromise !== undefined) {
-        return await currentAuthPromise
-    }
-    currentAuthPromise = discord.auth(authId).get("/users/@me").then(response => response.json())
-    authInfo = {
-        isLoggedIn: true,
-        userInfo: await currentAuthPromise
-    }
-    currentAuthPromise = undefined
-    authListeners.forEach(it => it.updateAuth())
-}
-
-export async function getAuthInfo() {
-    if (authInfo === undefined) {
-        await updateAuthInfo()
-    }
-    return authInfo
-}

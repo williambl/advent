@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Pizzly from 'pizzly-js';
 import Cookies from "universal-cookie";
-import { getAuthInfo, authListeners, removeAuthListener, updateAuthInfo } from '../utils'
 
 // Pizzly environment variables, make sure to replace
 // these with those of your own Pizzly instance
@@ -17,6 +16,39 @@ const pizzly = new Pizzly({
 const discord = pizzly.integration('discord', {
     setupId: DISCORD_SETUP_ID
 })
+
+var authListeners = []
+
+var currentAuthPromise = undefined
+var authInfo = undefined
+
+function removeAuthListener(item) {
+    authListeners = authListeners.filter(it => it !== item)
+}
+
+async function updateAuthInfo() {
+    const authId = new Cookies().get("auth")
+    if (authId === undefined) {
+        return
+    }
+    if (currentAuthPromise !== undefined) {
+        return await currentAuthPromise
+    }
+    currentAuthPromise = discord.auth(authId).get("/users/@me").then(response => response.json())
+    authInfo = {
+        isLoggedIn: true,
+        userInfo: await currentAuthPromise
+    }
+    currentAuthPromise = undefined
+    authListeners.forEach(it => it.updateAuth())
+}
+
+async function getAuthInfo() {
+    if (authInfo === undefined) {
+        await updateAuthInfo()
+    }
+    return authInfo
+}
 
 export class AuthProvider extends Component {
     constructor(props) {
