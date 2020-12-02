@@ -1,4 +1,5 @@
 import Challenge1 from './pages/challenges/1'
+import Challenge2 from './pages/challenges/2'
 import Cookies from "universal-cookie";
 const apiUrl = "https://advent2020-api.herokuapp.com"
 
@@ -8,7 +9,7 @@ export const currentDay = () => new Date().getMonth() === 11 ? new Date().getDat
 
 export const challengeComponents = [
     <Challenge1 />,
-    <Challenge1 />,
+    <Challenge2 />,
     <Challenge1 />,
     <Challenge1 />,
     <Challenge1 />,

@@ -3,5 +3,5 @@ import {challengeComponents} from "../utils"
 
 export default function ChallengeComponent() {
     const { id } = useParams()
-    return challengeComponents[id]
+    return challengeComponents[id-1]
 }
