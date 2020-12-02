@@ -103,7 +103,7 @@ export async function updateAuthInfo() {
     if (currentAuthPromise !== undefined) {
         return await currentAuthPromise
     }
-    currentAuthPromise = fetch(apiUrl+"/api/challengesCompleted", {headers: {'X-Auth': new Cookies().get("auth")}})
+    currentAuthPromise = discord.auth(authId).get("/users/@me").then(response => response.json())
     authInfo = {
         isLoggedIn: true,
         userInfo: await currentAuthPromise
