@@ -10,7 +10,7 @@ export default function Header (props) {
     return (
         <header className="window" style={{width: "auto", height: "70px"}}>
             <Link to="/">
-                <div className={ !isNaN(challengeNum) && props.completedChallenges !== undefined && props.completedChallenges.includes(challengeNum) ? "title-bar completed-challenge" : "title-bar"}>
+                <div className={ !isNaN(challengeNum) && props.completedChallenges !== undefined && props.completedChallenges.includes(challengeNum-1) ? "title-bar completed-challenge" : "title-bar"}>
                     <div className="title-bar-text">Advent challenge 2020</div>
                 </div>
             </Link>
