@@ -31,7 +31,7 @@ function Challenge3Inner(props) {
                     <label for="range">64</label>
                 </div>
 
-                <button style={{marginLeft: "20px"}} onClick={() => answerChallenge(2, value)}>{isComplete(2) ? "Complete!" : "Submit "+value}</button>
+                <button style={{marginLeft: "20px"}} disabled={isComplete(2) ? true : null} onClick={() => answerChallenge(2, value)}>{isComplete(2) ? "Complete!" : "Submit "+value}</button>
             </fieldset>
 
         </Window>
