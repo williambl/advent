@@ -7,12 +7,13 @@ import lockIcon from '../assets/Lock-icon.png'
 import keyIcon from '../assets/key-icon.png'
 import calculatorIcon from '../assets/calculator-icon.png'
 import joystickIcon from '../assets/joystick-icon.png'
+import keyIcon2 from '../assets/key-icon-2.png'
 
 const challengeDescriptions = [
     ["Just log in!"],
     ["This one's pretty base-ic"],
     ["Good at stacking?"],
-    ["?"],
+    ["Take a hint."],
     ["?"],
     ["?"],
     ["?"],
@@ -40,7 +41,7 @@ const challengeImages = [
     keyIcon,
     calculatorIcon,
     joystickIcon,
-    lockIcon,
+    keyIcon2,
     lockIcon,
     lockIcon,
     lockIcon,
