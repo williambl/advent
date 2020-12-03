@@ -1,5 +1,6 @@
 import Challenge1 from './pages/challenges/1'
 import Challenge2 from './pages/challenges/2'
+import Challenge3 from './pages/challenges/3'
 import Cookies from "universal-cookie";
 const apiUrl = "https://advent2020-api.herokuapp.com"
 
@@ -10,7 +11,7 @@ export const currentDay = () => new Date().getMonth() === 11 ? new Date().getDat
 export const challengeComponents = [
     <Challenge1 />,
     <Challenge2 />,
-    <Challenge1 />,
+    <Challenge3 />,
     <Challenge1 />,
     <Challenge1 />,
     <Challenge1 />,
@@ -70,14 +71,8 @@ export async function answerChallenge(id, answer) {
         }
     )
 
-    const value = response.ok && response.json.value
-
-    if (value) {
-        updateCompletedChallenges()
-        challengeCompletionListeners.forEach(it => it.updateChallenges())
-    }
-
-    return value
+    updateCompletedChallenges()
+    challengeCompletionListeners.forEach(it => it.updateChallenges())
 }
 
 export async function getCompletedChallenges() {
