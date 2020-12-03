@@ -58,7 +58,7 @@ export async function updateCompletedChallenges() {
 }
 
 export async function answerChallenge(id, answer) {
-    const response = await fetch(
+    await fetch(
         apiUrl+"/api/check/"+id, {
             method: 'POST',
             headers: {
