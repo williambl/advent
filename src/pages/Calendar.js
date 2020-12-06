@@ -9,6 +9,7 @@ import calculatorIcon from '../assets/calculator-icon.png'
 import joystickIcon from '../assets/joystick-icon.png'
 import keyIcon2 from '../assets/key-icon-2.png'
 import sgaIcon from '../assets/challenge5-icon.png'
+import cdIcon from '../assets/cd-icon.png'
 
 const challengeDescriptions = [
     ["Just log in!"],
@@ -16,7 +17,7 @@ const challengeDescriptions = [
     ["Good at stacking?"],
     ["Take a hint."],
     ["Sorry, I don't speak enchantment table"],
-    ["?"],
+    ["A two-parter"],
     ["?"],
     ["?"],
     ["?"],
@@ -44,7 +45,7 @@ const challengeImages = [
     joystickIcon,
     keyIcon2,
     sgaIcon,
-    lockIcon,
+    cdIcon,
     lockIcon,
     lockIcon,
     lockIcon,
