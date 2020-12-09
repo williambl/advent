@@ -10,6 +10,7 @@ import joystickIcon from '../assets/joystick-icon.png'
 import keyIcon2 from '../assets/key-icon-2.png'
 import sgaIcon from '../assets/challenge5-icon.png'
 import cdIcon from '../assets/cd-icon.png'
+import pigpenIcon from '../assets/pigpen-icon.png'
 
 const challengeDescriptions = [
     ["Just log in!"],
@@ -18,7 +19,7 @@ const challengeDescriptions = [
     ["Take a hint."],
     ["Sorry, I don't speak enchantment table"],
     ["A two-parter"],
-    ["?"],
+    ["Stuck in a (pig)pen"],
     ["?"],
     ["?"],
     ["?"],
@@ -46,7 +47,7 @@ const challengeImages = [
     keyIcon2,
     sgaIcon,
     cdIcon,
-    lockIcon,
+    pigpenIcon,
     lockIcon,
     lockIcon,
     lockIcon,
