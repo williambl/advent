@@ -12,6 +12,7 @@ import sgaIcon from '../assets/challenge5-icon.png'
 import cdIcon from '../assets/cd-icon.png'
 import pigpenIcon from '../assets/pigpen-icon.png'
 import caesarIcon from '../assets/caesar-icon.png'
+import augustusIcon from '../assets/augustus-icon.png'
 
 const challengeDescriptions = [
     ["Just log in!"],
@@ -50,7 +51,7 @@ const challengeImages = [
     cdIcon,
     pigpenIcon,
     caesarIcon,
-    lockIcon,
+    augustusIcon,
     lockIcon,
     lockIcon,
     lockIcon,
