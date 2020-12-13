@@ -14,6 +14,7 @@ import pigpenIcon from '../assets/pigpen-icon.png'
 import caesarIcon from '../assets/caesar-icon.png'
 import augustusIcon from '../assets/augustus-icon.png'
 import dogIcon from '../assets/dog-icon.png'
+import paintCanIcon from '../assets/paintcan-icon.png'
 
 const challengeDescriptions = [
     ["Just log in!"],
@@ -26,7 +27,7 @@ const challengeDescriptions = [
     ["Pretty ROT-ten"],
     ["Caesar part 2?"],
     ["Why use many when few word do trick?"],
-    ["?"],
+    ["An image-based one?"],
     ["?"],
     ["?"],
     ["?"],
@@ -54,7 +55,7 @@ const challengeImages = [
     caesarIcon,
     augustusIcon,
     dogIcon,
-    lockIcon,
+    paintCanIcon,
     lockIcon,
     lockIcon,
     lockIcon,

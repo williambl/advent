@@ -28,7 +28,7 @@ function Challenge2Inner(props) {
 
             <div style={{marginTop: "20px"}}>
             {
-                isComplete(1) ? <p>Complete!</p> : <input onChange={event => answerChallenge(1, event.target.value)} placeholder="Your answer" style={{borderRadius: "0"}} />
+                isComplete(1) ? <p>Complete!</p> : <input onChange={event => answerChallenge(1, event.target.value)} placeholder="Type answer (then refresh page)" style={{borderRadius: "0"}} />
             }
         </div>
 
