@@ -9,6 +9,7 @@ import Challenge8 from './pages/challenges/8'
 import Challenge9 from './pages/challenges/9'
 import Challenge10 from './pages/challenges/10'
 import Challenge11 from './pages/challenges/11'
+import Challenge12 from './pages/challenges/12'
 import Cookies from "universal-cookie";
 const apiUrl = "https://advent2020-api.herokuapp.com"
 
@@ -28,7 +29,7 @@ export const challengeComponents = [
     <Challenge9 />,
     <Challenge10 />,
     <Challenge11 />,
-    <Challenge1 />,
+    <Challenge12 />,
     <Challenge1 />,
     <Challenge1 />,
     <Challenge1 />,

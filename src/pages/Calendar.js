@@ -15,6 +15,7 @@ import caesarIcon from '../assets/caesar-icon.png'
 import augustusIcon from '../assets/augustus-icon.png'
 import dogIcon from '../assets/dog-icon.png'
 import paintCanIcon from '../assets/paintcan-icon.png'
+import codeIcon from '../assets/code-icon.png'
 
 const challengeDescriptions = [
     ["Just log in!"],
@@ -28,7 +29,7 @@ const challengeDescriptions = [
     ["Caesar part 2?"],
     ["Why use many when few word do trick?"],
     ["An image-based one?"],
-    ["?"],
+    ["Might have to inspect some things..."],
     ["?"],
     ["?"],
     ["?"],
@@ -56,7 +57,7 @@ const challengeImages = [
     augustusIcon,
     dogIcon,
     paintCanIcon,
-    lockIcon,
+    codeIcon,
     lockIcon,
     lockIcon,
     lockIcon,
