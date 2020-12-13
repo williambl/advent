@@ -18,7 +18,7 @@ function Challenge12Inner(props) {
     const [value, setValue] = useState(0)
 
     return (
-        <Window width={400} height={120} title={"Challenge #12" + (isComplete(1) ? " Complete!" : "")}>
+        <Window width={400} height={120} title={"Challenge #12" + (isComplete(11) ? " Complete!" : "")}>
             <p>
                 The answer is somewhere here...
             </p>
