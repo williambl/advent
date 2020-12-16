@@ -16,6 +16,7 @@ import augustusIcon from '../assets/augustus-icon.png'
 import dogIcon from '../assets/dog-icon.png'
 import paintCanIcon from '../assets/paintcan-icon.png'
 import codeIcon from '../assets/code-icon.png'
+import textToSheetIcon from '../assets/text-to-sheet-icon.png'
 
 const challengeDescriptions = [
     ["Just log in!"],
@@ -30,7 +31,7 @@ const challengeDescriptions = [
     ["Why use many when few word do trick?"],
     ["An image-based one?"],
     ["Might have to inspect some things..."],
-    ["?"],
+    ["Letters AND numbers? But I can't do English OR Maths!"],
     ["?"],
     ["?"],
     ["?"],
@@ -58,7 +59,7 @@ const challengeImages = [
     dogIcon,
     paintCanIcon,
     codeIcon,
-    lockIcon,
+    textToSheetIcon,
     lockIcon,
     lockIcon,
     lockIcon,
